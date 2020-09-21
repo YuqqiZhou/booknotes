@@ -24,7 +24,7 @@ partial results
 |:-:|:-:|
 |direct-enumeration|directly explores G to enumerate all results|
 |indexing-enumeration|build index upon graph G|
-|preprocessing-enumeration|1.candidate vertex set for each query vertex <br> 2.|
+|preprocessing-enumeration|1.candidate vertex set for each query vertex <br> 2.build auxiliary data structures for edeges <br>3.generate matching order<br>4.enumeratre all the results|
 1.
 2.
 3.
