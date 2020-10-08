@@ -26,17 +26,32 @@ partial results
 |indexing-enumeration|build index upon graph G|
 |preprocessing-enumeration|1.candidate vertex set for each query vertex <br> 2.build auxiliary data structures for edeges <br>3.generate matching order<br>4.enumeratre all the results|
 
-Filtering methods 
+#### Filtering methods 
 |paper|detail|
 |---|---|
 |GraphQL|local pruning and global refinement<br>local pruning is not fixed with RDF model<br> global refinement,"k度匹配性",prune v' if (v')'s neighbours not match v's neigbours|
 |**CFL**|compressed path index : 'neighbour generating','neighbour filtering'|
 |dp-iso|candidate space. But use *LDF* as generate rule, so it is not well|
 
-Recommendation
+#### Ordering Methods
+|paper|detail|
+|---|---|
+|GraphQL|left-deep join based method. The order of walking is determined by the order of C(v), always choose the minimun|
+|RI|do not consider G, choose max degree node as the start point, and always the node which has max neighbour in the order list as the next.|
+
+#### Enumeration Methods
+|paper|detail|
+|---|---|
+|GraphQL||
+|CECI/DP-iso|intersection of neighbour|
+
+#### Optimization Methods
+**Failing Set Pruning**
+[ignore]
+
+#### Recommendation
 1. **Fillter Methods**  Use the candidate vertex computation method of GraphQL as default. If the preprocessing time often dominates the query time, then switch to the method of CFL or DP-iso. 
-2. **ordering methods** Adopt the ordering methods of GraphQL and RI on dense and sparse data graphs respectively.
-3. Use CECI/DP-iso-style auxiliary data structures to maintain edges between candidates, and adopt the set intersection
+2. **Ordering Methods** Adopt the ordering methods of GraphQL and RI on dense and sparse data graphs respectively.
+3. **Enumeration Methods**Use CECI/DP-iso-style auxiliary data structures to maintain edges between candidates, and adopt the set intersection
 based local candidates computation. If the data graphs are very dense, then use QFilter as the set intersection method. 
-4. Enable the failing sets pruning on large queries, but disable it on small ones. By integrating the recommended techniques in each category into Algorithm 1, we can obtain
-an optimized method that outperforms the state-of-the-art algorithms such as DP-iso.
+4. **Optimization Methods** Enable the failing sets pruning on large queries, but disable it on small ones. 
